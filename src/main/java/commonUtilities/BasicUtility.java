@@ -1,4 +1,4 @@
-package saurabh_Maven;
+package commonUtilities;
 
 	import java.time.Duration;
 
@@ -40,12 +40,14 @@ package saurabh_Maven;
 		 driver.get(url);
 		  return driver;
 		 
-		} public void teardown () {
+		} 
+		
+		public void teardown () {
 			driver.close();
-		    driver.quit();
-			
-			
-		}public void waitForVisiblityByWebelemnt(WebDriver driver ,int time ,WebElement ele) {
+		    driver.quit();		
+		}
+		
+		public void waitForVisiblityByWebelemnt(WebDriver driver ,int time ,WebElement ele) {
 			WebDriverWait wt = new WebDriverWait(driver,Duration.ofSeconds(time));
 			wt.until(ExpectedConditions.visibilityOf(ele));
 			
