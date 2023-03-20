@@ -3,9 +3,9 @@ Feature: Validate the functionality of testing of SQL Injection
   So that sensitive data cannot be compromised  
 
   Background: Login to amazon application
-    Given User <Name> on the "Amazon" login page
-      | Name     |
-      | Shishpal |
+    Given User on the amazon Login page
+        | https://www.facebook.com/   | 
+        
 
   @ID1
   Scenario Outline: Verify the functionality of Injecting SQL code into a amazon login form
@@ -13,12 +13,12 @@ Feature: Validate the functionality of testing of SQL Injection
         When he clicks on "Submit" button
         Then user <UserName> should not be able to login into the "Amazon" dashboard page.
     Examples: 
-        | Name     | UserName          | Password    | 
-        | Shishpal | Shishpal123       | Shishpal@123| 
+      | UserName            | Password      | 
+      | 'Shishpal'          | 'Shishpal@123'| 
         
-
-  @tag2
-  Scenario Outline: Attempting to bypass authentication using SQL injection
+    
+    @ID2
+    Scenario Outline: Attempting to bypass authentication using SQL injection
     Given user <Username> is logged into amazon application
     When he navigates to the user profile page with an invalid user ID <ID>
     Then error message <ErrorMsg> should be displayed on "Amazon Home" page

@@ -1,20 +1,38 @@
 package stepDefinitions;
 
+import java.util.List;
+
+import commonUtilities.BasicUtility;
+import cucumber.api.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import programPract.Ex;
+
 
 public class SqlInjections {
 
-	@Given("User <Name> on the {string} login page")
-	public void user_name_on_the_login_page(String string, io.cucumber.datatable.DataTable dataTable) {
+      Ex exClass= new Ex(); 
+      BasicUtility utility= new BasicUtility(); 
+	
+      
+      @Given("User on the amazon Login page")
+      public void user_on_the_amazon_login_page(io.cucumber.datatable.DataTable dataTable) {
+    	  List<String> dataList = dataTable.asList(String.class);
+    	  utility.Openurl(dataList.get(0));
+      }
+
+	
+	@Given("he has entered {string} and {string} on {string} home page.")
+	public void he_has_entered_and_on_home_page(String userName, String password, String titlePage) {
+		exClass.Login(userName, password);
+	}
+
+	@Then("user {string} should not be able to login into the {string} dashboard page.")
+	public void user_should_not_be_able_to_login_into_the_dashboard_page(String string, String string2) {
 	   
 	}
 
-	@Given("he has entered Shishpal123 and Shishpal@{int} on {string} home page.")
-	public void he_has_entered_shishpal123_and_shishpal_on_home_page(Integer int1, String string) {
-	   
-	}
 
 	@When("he clicks on {string} button")
 	public void he_clicks_on_button(String string) {

@@ -1,8 +1,9 @@
 package commonUtilities;
 
 	import java.time.Duration;
+import java.util.List;
 
-	import org.openqa.selenium.By;
+import org.openqa.selenium.By;
 	import org.openqa.selenium.WebDriver;
 	import org.openqa.selenium.WebElement;
 	import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,6 +11,8 @@ package commonUtilities;
 	import org.openqa.selenium.firefox.FirefoxDriver;
 	import org.openqa.selenium.support.ui.ExpectedConditions;
 	import org.openqa.selenium.support.ui.WebDriverWait;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 	public class BasicUtility {
 		WebDriver driver = null;
@@ -91,8 +94,12 @@ package commonUtilities;
 			
 				
 			}
-				
-			
-		
+						
+		public void Openurl(String list) {
+			WebDriverManager.edgedriver().setup();
+			WebDriver driver=new EdgeDriver();
+			driver.get(list);
+			driver.manage().window().maximize();
+		}
 		
 }
