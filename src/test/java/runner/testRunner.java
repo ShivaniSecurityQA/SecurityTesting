@@ -1,3 +1,5 @@
+package runner;
+
 import org.junit.runner.RunWith;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -18,4 +20,5 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 		monochrome = true
 		)
 
-public class testRunner { }
+public class testRunner {
+	}

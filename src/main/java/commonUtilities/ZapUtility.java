@@ -1,6 +1,7 @@
 package commonUtilities;
 import org.openqa.selenium.Proxy;
 import org.zaproxy.clientapi.core.ClientApi;
+import org.zaproxy.clientapi.core.ClientApiException;
 
 public class ZapUtility {
 	private static ClientApi clientApi;
@@ -17,5 +18,19 @@ public class ZapUtility {
 		clientApi=new ClientApi(zapProxyAddress, zapProxyPort, zapApiKey);
 		proxy=new Proxy().setSslProxy(zapProxyAddress+":"+zapProxyPort).setHttpProxy(zapProxyAddress+":"+zapProxyPort);
 	}
+	
+	public static void zapReport() throws ClientApiException {
+		
+		String title="Security testing";
+		String template="traditional-html";
+		String filename="zap-report.html";
+		String desc="this is a zap report";
+		//String sites=url;
+		String reportdir=System.getProperty("user.dir");
+		
+		clientApi.reports.generate(title, template, null, desc, null, null, null, null, null, filename,null , reportdir, null);
+	}
+	
+	
 
 }
