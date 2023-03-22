@@ -11,15 +11,12 @@ public class Ex {
 	public static void main(String[] args) {
 		
 	}
-	
-	
-	
+		
 	public void Login(String username,String pass) {
 		driver.findElement(By.xpath("//input[@id='email']")).sendKeys(username);
 		driver.findElement(By.xpath("//input[@id='pass']")).sendKeys(pass);
 		driver.findElement(By.xpath("//button[@id='loginbutton']")).click();
 		
-	}
-	
+	}	
 
 }

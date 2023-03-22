@@ -7,7 +7,7 @@ Feature: Validate the functionality of testing of SQL Injection
         | https://www.facebook.com/   | 
         
 
-  @ID1
+  @ID
   Scenario Outline: Verify the functionality of Injecting SQL code into a amazon login form
         Given he has entered <UserName> and <Password> on "Amazon" home page.
         When he clicks on "Submit" button
@@ -17,7 +17,7 @@ Feature: Validate the functionality of testing of SQL Injection
       | 'Shishpal'          | 'Shishpal@123'| 
         
     
-    @ID2
+    
     Scenario Outline: Attempting to bypass authentication using SQL injection
     Given user <Username> is logged into amazon application
     When he navigates to the user profile page with an invalid user ID <ID>

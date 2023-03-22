@@ -1,18 +1,11 @@
 package runner;
 
 
-import java.time.Duration;
-import java.util.List;
-import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
 import org.zaproxy.clientapi.core.ClientApiException;
 
 import commonUtilities.ZapUtility;
@@ -35,7 +28,7 @@ public class ZapTest {
 				ZapUtility.zapReport();
 			test.setProxy(ZapUtility.proxy);
 			WebDriverManager.chromedriver();
-			driver= new ChromeDriver(coptions);
+			//driver= new ChromeDriver(coptions);
 		}
 
 }	

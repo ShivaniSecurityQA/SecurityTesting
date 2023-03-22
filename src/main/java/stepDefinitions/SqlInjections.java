@@ -3,7 +3,7 @@ package stepDefinitions;
 import java.util.List;
 
 import commonUtilities.BasicUtility;
-import cucumber.api.DataTable;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -17,7 +17,7 @@ public class SqlInjections {
 	
       
       @Given("User on the amazon Login page")
-      public void user_on_the_amazon_login_page(io.cucumber.datatable.DataTable dataTable) {
+      public void user_on_the_amazon_login_page(DataTable dataTable) {
     	  List<String> dataList = dataTable.asList(String.class);
     	  utility.Openurl(dataList.get(0));
       }
