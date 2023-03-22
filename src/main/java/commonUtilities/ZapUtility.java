@@ -1,5 +1,6 @@
 package commonUtilities;
 import org.openqa.selenium.Proxy;
+import org.zaproxy.clientapi.core.ApiResponse;
 import org.zaproxy.clientapi.core.ClientApi;
 import org.zaproxy.clientapi.core.ClientApiException;
 
@@ -16,7 +17,9 @@ public class ZapUtility {
 	
 	static {
 		clientApi=new ClientApi(zapProxyAddress, zapProxyPort, zapApiKey);
-		proxy=new Proxy().setSslProxy(zapProxyAddress+":"+zapProxyPort).setHttpProxy(zapProxyAddress+":"+zapProxyPort);
+		proxy=new Proxy();
+		proxy.setSslProxy(zapProxyAddress+":"+zapProxyPort);
+		proxy.setHttpProxy(zapProxyAddress+":"+zapProxyPort);
 	}
 	
 	public static void zapReport() throws ClientApiException {
@@ -28,7 +31,8 @@ public class ZapUtility {
 		//String sites=url;
 		String reportdir=System.getProperty("user.dir");
 		
-		clientApi.reports.generate(title, template, null, desc, null, null, null, null, null, filename,null , reportdir, null);
+		ApiResponse resp= clientApi.reports.generate(title, template, null, desc, null, null, null, null, null, filename,null , reportdir, null);
+		System.out.println("Report is Generated at this location :"+ resp.toString());
 	}
 	
 	
