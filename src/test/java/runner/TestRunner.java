@@ -14,8 +14,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 @RunWith(Cucumber.class)
 @CucumberOptions(
 		//features = "C:\\Features\\SQLInjection.feature"
-		//features = "src/main/java/featureFiles/"
-		features = "C:\\Users\\Z004E9RJ\\eclipse-workspace\\SecurityTesting\\src\\main\\java\\featureFiles\\SQLInjection.feature"
+		features = "src/main/java/featureFiles/"
+		//features = "C:\\Users\\Z004E9RJ\\eclipse-workspace\\SecurityTesting\\src\\main\\java\\featureFiles\\SQLInjection.feature"
 		,glue = {"stepDefinitions"}
 		//,dryRun = true
 		,tags =  "@ID"

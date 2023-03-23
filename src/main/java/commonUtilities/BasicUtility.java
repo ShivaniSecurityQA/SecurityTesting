@@ -16,7 +16,8 @@ import org.openqa.selenium.edge.EdgeDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 	public class BasicUtility {
-		WebDriver driver = null;
+		//WebDriver driver = null;
+		WebDriver driver;
 	   public static BasicUtility bUtil = new BasicUtility();
 
 		public WebDriver startUp(String browserName,String url) {
@@ -96,11 +97,22 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 				
 			}
 						
-		public void Openurl(String list) {
-			WebDriverManager.edgedriver().setup();
-			WebDriver driver=new EdgeDriver();
-			driver.get(list);
-			driver.manage().window().maximize();
+		public void Openurl(String url) {
+//			WebDriverManager.edgedriver().setup();
+//			WebDriver driver=new EdgeDriver();
+//			driver.get(list);
+//			driver.manage().window().maximize();
+			
+			ChromeOptions coptions =new ChromeOptions();
+			coptions.addArguments("--remote-allow-origins=*");
+			coptions.addArguments("--ignore-certificate-errors");
+			coptions.setProxy(ZapUtility.proxy);
+			
+			WebDriverManager.chromedriver().setup();
+			driver= new ChromeDriver(coptions);
+			//generating zap report
+			//driver.get("https://owasp.org/www-project-juice-shop/");
+			driver.get(url);
 		}
 		
 }
