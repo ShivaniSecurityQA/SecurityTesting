@@ -26,30 +26,35 @@ public class ZapTest {
 
 		}
 	}
-		public void test() throws ClientApiException {
-			WebDriver driver;
-			
-			ChromeOptions test =new ChromeOptions();
-			//FirefoxOptions fo = new FirefoxOptions();
-			//WebDriverManager.chromedriver();
-			//	driver= new ChromeDriver(coptions);
-				
-				//generating zap report
-				ZapUtility.zapReport();
-			test.setProxy(ZapUtility.proxy);
-			WebDriverManager.chromedriver();
-			//driver= new ChromeDriver(coptions);
-		}
+//		public void test() throws ClientApiException {
+//			WebDriver driver;
+//			
+//			ChromeOptions test =new ChromeOptions();
+//			//FirefoxOptions fo = new FirefoxOptions();
+//			//WebDriverManager.chromedriver();
+//			//	driver= new ChromeDriver(coptions);
+//				
+//				//generating zap report
+//				ZapUtility.zapReport();
+//			test.setProxy(ZapUtility.proxy);
+//			WebDriverManager.chromedriver();
+//			//driver= new ChromeDriver(coptions);
+//		}
 	
 	public void setUp() throws ClientApiException {
 
 		ChromeOptions coptions =new ChromeOptions();
+		coptions.addArguments("--remote-allow-origins=*");
+		coptions.addArguments("--ignore-certificate-errors");
 		coptions.setProxy(ZapUtility.proxy);
 		
 		WebDriverManager.chromedriver().setup();
 		driver= new ChromeDriver(coptions);
 		//generating zap report
-		driver.get("https://www.google.in");
+		//driver.get("https://owasp.org/www-project-juice-shop/");
+		driver.get("https://juice-shop.herokuapp.com/#/login");
+		//'or'1'='1';     ----useful for sql injection
+		
 		ZapUtility.zapReport();
 		
 	}
