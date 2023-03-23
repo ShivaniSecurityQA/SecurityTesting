@@ -54,6 +54,8 @@ public class ZapTest {
 		//driver.get("https://owasp.org/www-project-juice-shop/");
 		driver.get("https://juice-shop.herokuapp.com/#/login");
 		//'or'1'='1';     ----useful for sql injection
+		String ttl=driver.getTitle();
+		System.out.println(ttl);
 		
 		ZapUtility.zapReport();
 		

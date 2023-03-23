@@ -11,7 +11,7 @@ Feature: Validate the functionality of testing of SQL Injection
     Scenario Outline: Verify the functionality of Injecting SQL code into a juice-shop login page
           Given he has entered <UserName> and <Password> on "juice-shop" login page.
           When he clicks on "Submit" button
-          Then user <UserName> should not be able to login into the "juice-shop" dashboard page.
+          Then user <UserName> should be able to login into the "juice-shop" dashboard page.
       Examples: 
         | UserName            | Password      | 
         | ''or'1'='1';'       | 'abc'         | 
