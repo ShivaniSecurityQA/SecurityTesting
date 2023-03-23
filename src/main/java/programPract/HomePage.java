@@ -23,6 +23,9 @@ public class HomePage {
 	@FindBy (xpath="//img[@alt='Apple Juice (1000ml)']")
 	WebElement vImage;
 	
+	@FindBy (xpath="//span[text()='Dismiss']")
+	WebElement dismissBtn;
+	
 	public HomePage(WebDriver driver) {
 		this.driver=driver;
 		PageFactory.initElements(driver, this);
@@ -54,6 +57,11 @@ public class HomePage {
 	public void verifyLogin() {
 		utility.waitForVisiblityByWebelemnt(driver, 10, vImage);
 		
+	}
+	
+	public void clickDismissBtn()
+	{
+		dismissBtn.click();
 	}
 	
 

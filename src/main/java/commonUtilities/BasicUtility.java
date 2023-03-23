@@ -9,7 +9,8 @@ import org.openqa.selenium.By;
 	import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
-	import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 	import org.openqa.selenium.support.ui.ExpectedConditions;
 	import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -103,16 +104,29 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 //			driver.get(list);
 //			driver.manage().window().maximize();
 			
-			ChromeOptions coptions =new ChromeOptions();
-			coptions.addArguments("--remote-allow-origins=*");
-			coptions.addArguments("--ignore-certificate-errors");
-			coptions.setProxy(ZapUtility.proxy);
+//			ChromeOptions coptions =new ChromeOptions();
+//			coptions.addArguments("--remote-allow-origins=*");
+//			coptions.addArguments("--ignore-certificate-errors");
+//			coptions.setProxy(ZapUtility.proxy);
+//			
+//			WebDriverManager.chromedriver().setup();
+//			driver= new ChromeDriver(coptions);
+			EdgeOptions captions=new EdgeOptions();
+			captions.addArguments("--remote-allow-origins=*");
+			captions.addArguments("--ignore-certificate-errors");
+			captions.setProxy(ZapUtility.proxy);
 			
-			WebDriverManager.chromedriver().setup();
-			driver= new ChromeDriver(coptions);
+			WebDriverManager.edgedriver().setup();
+			driver= new EdgeDriver(captions);
 			//generating zap report
 			//driver.get("https://owasp.org/www-project-juice-shop/");
-			driver.get(url);
+			driver.get("https://juice-shop.herokuapp.com/#/login");
+			//'or'1'='1';     ----useful for sql injection
+			String ttl=driver.getTitle();
+			System.out.println(ttl);
+			//generating zap report
+			//driver.get("https://owasp.org/www-project-juice-shop/");
+//			driver.get(url);
 		}
 		
 }

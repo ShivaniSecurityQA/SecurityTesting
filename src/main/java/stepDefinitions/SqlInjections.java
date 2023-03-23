@@ -27,17 +27,19 @@ public class SqlInjections {
 //      }
 
 	
-	@Given("he has entered {string} and {string} on {string} home page.")
-	public void he_has_entered_and_on_home_page(String userName, String password, String titlePage) {
-		hp.enterUserName(userName);
-		hp.enterPassword(password);
-	}
-
 	@Given("User on the juice-shop Login page")
 	public void user_on_the_juice_shop_login_page(io.cucumber.datatable.DataTable dataTable) {
 		 List<String> dataList = dataTable.asList(String.class);
    	  utility.Openurl(dataList.get(0));
 	}
+	
+	@Given("he has entered {string} and {string} on {string} home page.")
+	public void he_has_entered_and_on_home_page(String userName, String password, String titlePage) {
+		hp.clickDismissBtn();
+		hp.enterUserName(userName);
+		hp.enterPassword(password);
+	}
+
 	
 	@When("he clicks on {string} button")
 	public void he_clicks_on_button(String string) {

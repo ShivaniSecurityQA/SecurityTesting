@@ -4,6 +4,8 @@ package runner;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.zaproxy.clientapi.core.ClientApiException;
 
 import commonUtilities.ZapUtility;
@@ -44,12 +46,13 @@ public class ZapTest {
 	public void setUp() throws ClientApiException {
 
 		ChromeOptions coptions =new ChromeOptions();
-		coptions.addArguments("--remote-allow-origins=*");
-		coptions.addArguments("--ignore-certificate-errors");
-		coptions.setProxy(ZapUtility.proxy);
+		EdgeOptions captions=new EdgeOptions();
+		captions.addArguments("--remote-allow-origins=*");
+		captions.addArguments("--ignore-certificate-errors");
+		captions.setProxy(ZapUtility.proxy);
 		
-		WebDriverManager.chromedriver().setup();
-		driver= new ChromeDriver(coptions);
+		WebDriverManager.edgedriver().setup();
+		driver= new EdgeDriver(captions);
 		//generating zap report
 		//driver.get("https://owasp.org/www-project-juice-shop/");
 		driver.get("https://juice-shop.herokuapp.com/#/login");
