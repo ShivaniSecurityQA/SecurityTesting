@@ -19,7 +19,8 @@ public class XssZap  {
 	
 	 static WebDriver driver;
 		
-	public static void main(String[] args) throws ClientApiException {
+	public static void main(String[] args) {
+	}
 		
 		
 //		 XssZap zt = new XssZap();
@@ -43,25 +44,10 @@ public class XssZap  {
 //				WebDriverManager.chromedriver();
 //				//driver= new ChromeDriver(coptions);
 //			}
-		public static void connectZap() {
-            ClientApi zapClient = new ClientApi("localhost", 8080);
-            ChromeOptions coptions =new ChromeOptions();
-			EdgeOptions captions=new EdgeOptions();
-			captions.addArguments("--remote-allow-origins=*");
-			captions.addArguments("--ignore-certificate-errors");
-			captions.setProxy(ZapUtility.proxy);
-			
-             WebDriverManager.edgedriver().setup();
-		    try {
-				driver= new EdgeDriver(captions);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+		
 		
 		public void setUp(String url) {
-			
+			connectZap();
 //			ChromeOptions coptions =new ChromeOptions();
 //			EdgeOptions captions=new EdgeOptions();
 //			captions.addArguments("--remote-allow-origins=*");
@@ -103,7 +89,24 @@ public class XssZap  {
 				ZapUtility.zapReport();
 			}
 			
+		public static void connectZap() {
+            ClientApi zapClient = new ClientApi("localhost", 8080);
+            ChromeOptions coptions =new ChromeOptions();
+			EdgeOptions captions=new EdgeOptions();
+			captions.addArguments("--remote-allow-origins=*");
+			captions.addArguments("--ignore-certificate-errors");
+			captions.setProxy(ZapUtility.proxy);
+			
+             WebDriverManager.edgedriver().setup();
+		    try {
+				driver= new EdgeDriver(captions);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
+		}
+		
 
 
 

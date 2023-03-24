@@ -20,8 +20,8 @@ public class XssZap  {
 	 static WebDriver driver;
 		
 	public static void main(String[] args) throws ClientApiException {
-            ClientApi zapClient = new ClientApi("localhost", 8080);
-            ChromeOptions coptions =new ChromeOptions();
+         //   ClientApi zapClient = new ClientApi("localhost", 8080);
+         //   ChromeOptions coptions =new ChromeOptions();
 			EdgeOptions captions=new EdgeOptions();
 			captions.addArguments("--remote-allow-origins=*");
 			captions.addArguments("--ignore-certificate-errors");
@@ -43,6 +43,7 @@ public class XssZap  {
 			zt.clickSubmitBtn();
 		
 		}
+	
 //			public void test() throws ClientApiException {
 //				WebDriver driver;
 //				
@@ -91,8 +92,6 @@ public class XssZap  {
 					  
 				  WebElement loginbtn = driver.findElement(By.xpath("//button[@id='loginButton']"));
 				   loginbtn.click();
-				 
-				   
 				   
 			}
 			
