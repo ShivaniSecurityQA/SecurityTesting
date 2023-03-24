@@ -17,50 +17,28 @@ import runner.ZapTest;
 import java.net.URL;
 public class XssZap  {
 	
-	
-	public static void main(String[] args) {
+	 static WebDriver driver;
+		
+	public static void main(String[] args) throws ClientApiException {
             ClientApi zapClient = new ClientApi("localhost", 8080);
-		
-//	  WebDriverManager.edgedriver().setup();
-////		  
-//	  WebDriver driver = new EdgeDriver();
-////		   driver.get("https://juice-shop.herokuapp.com/#/login");
-//	
-////		 
-//		   WebElement uname = driver.findElement(By.xpath("//input[@id='email']"));
-//		   
-//		   uname.sendKeys("'or'1'='1';");
-//		   
-//		   
-//		  WebElement pwd =  driver.findElement(By.cssSelector("#password"));
-//		  pwd.sendKeys("123");
-//		  
-//		  WebElement loginbtn = driver.findElement(By.xpath("//button[@id='loginButton']"));
-//		   loginbtn.click();
-		
-		 XssZap zt = new XssZap();
-			try {
-				zt.setUp();
-			} catch (ClientApiException e) {
+            ChromeOptions coptions =new ChromeOptions();
+			EdgeOptions captions=new EdgeOptions();
+			captions.addArguments("--remote-allow-origins=*");
+			captions.addArguments("--ignore-certificate-errors");
+			captions.setProxy(ZapUtility.proxy);
+			
+             WebDriverManager.edgedriver().setup();
+		    try {
+				driver= new EdgeDriver(captions);
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-
-			} 
-//			XssZap zp = new XssZap();
-//			zp.Locator();
-//			}
-//			 public void Locator () {
-//			   WebElement uname = driver.findElement(By.xpath("//input[@id='email']"));
-//			   
-//			   uname.sendKeys("'or'1'='1';");
-//			   
-//			   
-//			  WebElement pwd =  driver.findElement(By.cssSelector("#password"));
-//			  pwd.sendKeys("123");
-//			  
-//			  WebElement loginbtn = driver.findElement(By.xpath("//button[@id='loginButton']"));
-//			   loginbtn.click();
-//			 
+			}
+           
+		 XssZap zt = new XssZap();
+			zt.setUp();
+			zt.enterUserPass();
+		
 		}
 //			public void test() throws ClientApiException {
 //				WebDriver driver;
@@ -77,35 +55,46 @@ public class XssZap  {
 //				//driver= new ChromeDriver(coptions);
 //			}
 		
-		public void setUp() throws ClientApiException {
-
-			ChromeOptions coptions =new ChromeOptions();
-			EdgeOptions captions=new EdgeOptions();
-			captions.addArguments("--remote-allow-origins=*");
-			captions.addArguments("--ignore-certificate-errors");
-			captions.setProxy(ZapUtility.proxy);
+		public void setUp() {
 			
-             WebDriverManager.edgedriver().setup();
-			WebDriver driver= new EdgeDriver(captions);
+//			ChromeOptions coptions =new ChromeOptions();
+//			EdgeOptions captions=new EdgeOptions();
+//			captions.addArguments("--remote-allow-origins=*");
+//			captions.addArguments("--ignore-certificate-errors");
+//			captions.setProxy(ZapUtility.proxy);
+//			
+//             WebDriverManager.edgedriver().setup();
+//			WebDriver driver= new EdgeDriver(captions);
 			//generating zap report
 			//driver.get("https://owasp.org/www-project-juice-shop/");
 			driver.get("https://juice-shop.herokuapp.com/#/login");
 			//'or'1'='1';     ----useful for sql injection
 			String ttl=driver.getTitle();
 			System.out.println(ttl);
-			 WebElement uname = driver.findElement(By.cssSelector("#email"));
-			   
-			   uname.sendKeys("'or'1'='1';");
-			   
-			   
-			  WebElement pwd =  driver.findElement(By.cssSelector("#password"));
-			  pwd.sendKeys("123");
-			  
-			  WebElement loginbtn = driver.findElement(By.xpath("//button[@id='loginButton']"));
-			   loginbtn.click();
-			 
-			ZapUtility.zapReport();
+		}	
 			
-		}}
+			public void enterUserPass() {
+			
+				 WebElement uname = driver.findElement(By.cssSelector("#email"));
+				   
+				   uname.sendKeys("'or'1'='1';");
+				   
+				   
+				  WebElement pwd =  driver.findElement(By.cssSelector("#password"));
+				  pwd.sendKeys("123");
+				  
+				  WebElement loginbtn = driver.findElement(By.xpath("//button[@id='loginButton']"));
+				   loginbtn.click();
+				 
+				   
+				   
+			}
+			
+			public void ZaputilityReport() throws Exception {
+				ZapUtility.zapReport();
+			}
+			
+		}
+
 		
 	

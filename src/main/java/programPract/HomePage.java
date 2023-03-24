@@ -15,7 +15,7 @@ import commonUtilities.ZapUtility;
 import io.github.bonigarcia.wdm.WebDriverManager;
 public class HomePage {
 	
- WebDriver driver;
+Webdriver driver;
  BasicUtility utility=new BasicUtility();
 	
 	//@FindBy (xpath="//input[@id='email']")
@@ -39,7 +39,7 @@ public class HomePage {
 	WebElement dismissBtn;
 	
 	public HomePage(WebDriver driver) {
-		this.driver=driver;
+	   driver=driver;
 		PageFactory.initElements(driver, this);
 }
 	
@@ -85,10 +85,10 @@ public class HomePage {
 		captions.setProxy(ZapUtility.proxy);
 		
 		WebDriverManager.edgedriver().setup();
-		driver= new EdgeDriver(captions);
+		this.driver= new EdgeDriver(captions);
 		//generating zap report
 		//driver.get("https://owasp.org/www-project-juice-shop/");
-		driver.get("https://juice-shop.herokuapp.com/#/login");
+		this.driver.get("https://juice-shop.herokuapp.com/#/login");
 		//'or'1'='1';     ----useful for sql injection
 		String ttl=driver.getTitle();
 		System.out.println(ttl);
