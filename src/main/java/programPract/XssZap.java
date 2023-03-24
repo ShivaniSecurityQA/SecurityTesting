@@ -12,7 +12,7 @@ import org.zaproxy.clientapi.core.ClientApiException;
 
 import commonUtilities.ZapUtility;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import runner.ZapTest;
+
 
 import java.net.URL;
 public class XssZap  {

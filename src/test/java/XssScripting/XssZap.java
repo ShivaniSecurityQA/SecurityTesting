@@ -20,26 +20,27 @@ public class XssZap  {
 	 static WebDriver driver;
 		
 	public static void main(String[] args) throws ClientApiException {
-//            ClientApi zapClient = new ClientApi("localhost", 8080);
-//            ChromeOptions coptions =new ChromeOptions();
-//			EdgeOptions captions=new EdgeOptions();
-//			captions.addArguments("--remote-allow-origins=*");
-//			captions.addArguments("--ignore-certificate-errors");
-//			captions.setProxy(ZapUtility.proxy);
-//			
-//             WebDriverManager.edgedriver().setup();
-//		    try {
-//				driver= new EdgeDriver(captions);
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//           
-//		 XssZap zt = new XssZap();
-//			zt.setUp();
-//			
+            ClientApi zapClient = new ClientApi("localhost", 8080);
+            ChromeOptions coptions =new ChromeOptions();
+			EdgeOptions captions=new EdgeOptions();
+			captions.addArguments("--remote-allow-origins=*");
+			captions.addArguments("--ignore-certificate-errors");
+			captions.setProxy(ZapUtility.proxy);
+			
+             WebDriverManager.edgedriver().setup();
+		    try {
+				driver= new EdgeDriver(captions);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+           
+		 XssZap zt = new XssZap();
+			zt.setUp();
+			
 		
-//			zt.enterUserPass();
+			zt.enterUserPass();
+			zt.clickSubmitBtn();
 		
 		}
 //			public void test() throws ClientApiException {
@@ -75,15 +76,15 @@ public class XssZap  {
 			System.out.println(ttl);
 		}	
 			
-			public void enterUserPass(String userName,String password) {
+			public void enterUserPass() {
 			 
 				 WebElement uname = driver.findElement(By.cssSelector("#email"));
 				   
-				   uname.sendKeys(userName);
+				   uname.sendKeys("'or'1'='1';");
 				   
 				   
 				  WebElement pwd =  driver.findElement(By.cssSelector("#password"));
-				  pwd.sendKeys(password);
+				  pwd.sendKeys("123");
 				  
 			}  
 				  public void clickSubmitBtn() {
