@@ -1,5 +1,6 @@
 package programPract;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -17,15 +18,20 @@ public class HomePage {
  WebDriver driver;
  BasicUtility utility=new BasicUtility();
 	
-	@FindBy (xpath="//input[@id='email']")
-	WebElement username;
+	//@FindBy (xpath="//input[@id='email']")
+    WebElement username = driver.findElement(By.xpath("//input[@id='email']"));
+	//WebElement username;
 	
-	@FindBy (css="#password")
-	WebElement password;
-	
-	@FindBy (xpath="//button[@id='loginButton']")
-	WebElement submtBtn;
-	
+//	@FindBy (css="#password")
+//	WebElement password;
+    WebElement pwd =  driver.findElement(By.cssSelector("#password"));
+	 
+    
+//	@FindBy (xpath="//button[@id='loginButton']")
+//	WebElement submtBtn;
+    
+    WebElement loginbtn = driver.findElement(By.xpath("//button[@id='loginButton']"));
+    
 	@FindBy (xpath="//img[@alt='Apple Juice (1000ml)']")
 	WebElement vImage;
 	
@@ -52,12 +58,12 @@ public class HomePage {
 	
 	public void enterPassword(String pass)
 	{
-		password.sendKeys(pass);
+		pwd.sendKeys(pass);
 	}
 	
 	public void clickSubmitBtn()
 	{
-		submtBtn.click();
+		loginbtn.click();
 	}
 	
 	public void verifyLogin() {
