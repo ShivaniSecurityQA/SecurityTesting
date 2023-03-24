@@ -11,6 +11,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import programPract.Ex;
 import programPract.HomePage;
+import programPract.XssZap;
 
 
 public class SqlInjections {
@@ -18,8 +19,10 @@ public class SqlInjections {
 	//  Ex exClass= new Ex(); 
 	WebDriver driver;
 	BasicUtility utility= new BasicUtility(); 
-	HomePage hp= new HomePage(driver);
-
+	//HomePage hp= new HomePage(driver);
+	XssZap zp = new XssZap();
+	
+	
 //      @Given("User on the amazon Login page")
 //      public void user_on_the_amazon_login_page(DataTable dataTable) {
 //    	  List<String> dataList = dataTable.asList(String.class);
@@ -30,20 +33,21 @@ public class SqlInjections {
 	@Given("User on the juice-shop Login page")
 	public void user_on_the_juice_shop_login_page(io.cucumber.datatable.DataTable dataTable) {
 		 List<String> dataList = dataTable.asList(String.class);
-   	  utility.Openurl(dataList.get(0));
+   	 zp.setUp(dataList.get(0));
 	}
 	
 	@Given("he has entered {string} and {string} on {string} home page.")
 	public void he_has_entered_and_on_home_page(String userName, String password, String titlePage) {
-		hp.clickDismissBtn();
-		hp.enterUserName(userName);
-		hp.enterPassword(password);
+//		hp.clickDismissBtn();
+//		hp.enterUserName(userName);
+//		hp.enterPassword(password);
+		zp.enterUserPass(userName, password);
 	}
 
 	
 	@When("he clicks on {string} button")
 	public void he_clicks_on_button(String string) {
-	    hp.clickSubmitBtn();
+	    zp.clickSubmitBtn();
 	}
 	
 	@Given("he has entered ''or'{int}'='{int}';' and {string} on {string} login page.")
@@ -70,5 +74,6 @@ public class SqlInjections {
 	public void error_message_should_be_displayed_on_page(String string, String string2) {
 	   
 	}
+
 
 }

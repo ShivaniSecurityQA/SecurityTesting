@@ -1,4 +1,4 @@
-package XssScripting;
+package programPract;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,28 +20,15 @@ public class XssZap  {
 	 static WebDriver driver;
 		
 	public static void main(String[] args) throws ClientApiException {
-//            ClientApi zapClient = new ClientApi("localhost", 8080);
-//            ChromeOptions coptions =new ChromeOptions();
-//			EdgeOptions captions=new EdgeOptions();
-//			captions.addArguments("--remote-allow-origins=*");
-//			captions.addArguments("--ignore-certificate-errors");
-//			captions.setProxy(ZapUtility.proxy);
-//			
-//             WebDriverManager.edgedriver().setup();
-//		    try {
-//				driver= new EdgeDriver(captions);
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//           
+		
+		
 //		 XssZap zt = new XssZap();
 //			zt.setUp();
-//			
+			
 		
 //			zt.enterUserPass();
 		
-		}
+		
 //			public void test() throws ClientApiException {
 //				WebDriver driver;
 //				
@@ -56,9 +43,25 @@ public class XssZap  {
 //				WebDriverManager.chromedriver();
 //				//driver= new ChromeDriver(coptions);
 //			}
+		public static void connectZap() {
+            ClientApi zapClient = new ClientApi("localhost", 8080);
+            ChromeOptions coptions =new ChromeOptions();
+			EdgeOptions captions=new EdgeOptions();
+			captions.addArguments("--remote-allow-origins=*");
+			captions.addArguments("--ignore-certificate-errors");
+			captions.setProxy(ZapUtility.proxy);
+			
+             WebDriverManager.edgedriver().setup();
+		    try {
+				driver= new EdgeDriver(captions);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
-		public void setUp() {
-			conncetZap();
+		public void setUp(String url) {
+			
 //			ChromeOptions coptions =new ChromeOptions();
 //			EdgeOptions captions=new EdgeOptions();
 //			captions.addArguments("--remote-allow-origins=*");
@@ -69,7 +72,7 @@ public class XssZap  {
 //			WebDriver driver= new EdgeDriver(captions);
 			//generating zap report
 			//driver.get("https://owasp.org/www-project-juice-shop/");
-			driver.get("https://juice-shop.herokuapp.com/#/login");
+			driver.get(url);
 			//'or'1'='1';     ----useful for sql injection
 			String ttl=driver.getTitle();
 			System.out.println(ttl);
@@ -94,28 +97,14 @@ public class XssZap  {
 				   
 				   
 			}
+				  
 			
 			public void ZaputilityReport() throws Exception {
 				ZapUtility.zapReport();
 			}
-			public void conncetZap() {
-				   ClientApi zapClient = new ClientApi("localhost", 8080);
-		            ChromeOptions coptions =new ChromeOptions();
-					EdgeOptions captions=new EdgeOptions();
-					captions.addArguments("--remote-allow-origins=*");
-					captions.addArguments("--ignore-certificate-errors");
-					captions.setProxy(ZapUtility.proxy);
-					
-		             WebDriverManager.edgedriver().setup();
-				    try {
-						driver= new EdgeDriver(captions);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-		           
-			}
-			}
+			
+		}
 
-		
+
+
 	
